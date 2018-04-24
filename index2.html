@@ -174,6 +174,45 @@
             </ul>
         </div>
     </div>
+    <script src="//imgcache.qq.com/bossweb/service/js/touch/zepto.min.js" type="text/javascript"></script>
+    <script>
+        function getUrlVal(para) {
+            var search = location.search; //页面URL的查询部分字符串  
+            var arrPara = new Array(); //参数数组。数组单项为包含参数名和参数值的字符串，如“para=value”  
+            var arrVal = new Array(); //参数值数组。用于存储查找到的参数值  
+
+            if (search != "") {
+                var index = 0;
+                search = search.substr(1); //去除开头的“?”  
+                arrPara = search.split("&");
+
+                for (i in arrPara) {
+                    var paraPre = para + "="; //参数前缀。即参数名+“=”，如“para=”  
+                    if (arrPara[i].indexOf(paraPre) == 0 && paraPre.length < arrPara[i].length) {
+                        arrVal[index] = decodeURI(arrPara[i].substr(paraPre.length)); //顺带URI解码避免出现乱码  
+                        index++;
+                    }
+                }
+            }
+
+            if (arrVal.length == 1) {
+                return arrVal[0];
+            } else if (arrVal.length == 0) {
+                return null;
+            } else {
+                return arrVal;
+            }
+        }
+        var index = getUrlVal('id');
+        // 页面数据
+        var data = [{title:'初始资料录入',infos:[{title:' 1.提交企业认证',href:'2'},{title:'2.添加员工',href:'3'},{title:'3.关联华夏帐号',href:'4'},{title:'4.设置店铺',href:'5'}]},{title:'经营资源录入',infos:[{title:'1.录入库存车辆',href:'6'},{title:'2.录入预收购车辆',href:'7'},{title:'3.录入客户信息',href:'8'},{title:'4.设置每月业绩目标',href:'9'}]},{title:' 定价与记帐',infos:[{title:'1.库存车辆定价',href:'10'},{title:'2.库存车辆收支记帐',href:'11'},{title:'3.行政类收支记帐',href:'12'}]},{title:'开单交易与跟',infos:[{title:'1.为添加车辆意向客户',href:'13'},{title:'2.添加车辆预定订单',href:'14'},{title:'3.添加车辆成交订单',href:'15'},{title:'4.销售订单跟踪',href:'16'}]},{title:'销营与传播',infos:[{title:'1.创建自己的联盟圈',href:'17'},{title:'2.加入他人的联盟圈',href:'18'},{title:'3.分享库存列表',href:'19'},{title:'4.分享库存详情',href:'20'}]}];
+        var str1 = '<h2>'+ data[index].title +'</h2>';
+        var str2 = ''
+        for(var i =0;i<data[index].infos.length;i++){
+            str2 +='<li><a href="./index3.html?id='+ data[index].infos[i].href +'" class="wrapper1"><div class="wording_area">'+ data[index].infos[i].title +'</div><div class="arrow_area"><img src="//imgcache.qq.com/bossweb/service/touch/images/arrow_icon.png" class="icon_arrow_right"></div></a></li>'
+        }
+        $('#search_content').html(''+ str1 +'<div><ul class="list1" id="detail_list">'+ str2 +'</ul></div>');
+    </script>
 </body>
 
 </html>

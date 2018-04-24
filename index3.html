@@ -24,11 +24,12 @@
         media="screen" />
 </head>
 <style>
-    #page_main{
-        padding-bottom:45px;
+    #page_main {
+        padding-bottom: 45px;
         background: #ffffff;
     }
 </style>
+
 <body ontouchstart>
     <input type="hidden" id="faqid" name="faqid" value="180122N3aAnq180122VNzA7b" />
     <input type="hidden" id="sid" name="sid" value="1001728" />
@@ -45,31 +46,53 @@
     <div class="wapper" id="page_main">
         <!--主内容区域-begin-->
         <div class="detail-box">
-            <h2 class="q-title">手机号/QQ号绑定与解绑微信问题</h2>
-            <div class="q-content">
-                <div>
-                    <div style="line-height: 21px;">
-                        <b>手机号绑定与解绑微信：</b>
-                    </div>
-                    <div style="line-height: 21px;">为了保障微信帐号的安全及使用，目前同一手机号只能绑定一个微信号，绑定成功后可以更换但不支持解绑。</div>
-                    <div style="line-height: 21px;">如手机号绑定的微信已经被封，无法解除手机号与被封帐号的绑定关系，建议根据登录弹窗提示操作自助解封或了解被封详情。</div>
-                    <div style="line-height: 21px;">
-                        <font color="#008000" style="line-height: 21px;">注：</font>如开启了财产入口，去操作解绑QQ/邮箱时，解绑操作不会有任何反应。</div>
-                    <div style="line-height: 21px;">绑定或更换绑定的方法：在微信中选择【我】-&gt;【设置】-&gt;【帐号与安全】-&gt;选择【手机号】-&gt;绑定/更换手机号即可。</div>
-                    <div style="text-align: center; line-height: 21px;">
-                        <img src="https://file.service.qq.com/user-files/uploads/201801/043095c4a785d489dd2a2d7a0555a102.jpg">
-                    </div>
-                    <div style="line-height: 21px;">
-                        <br>
-                    </div>
-                    <div style="line-height: 21px;">
-                        <b>新注册的QQ号绑定不了微信：</b>
-                    </div>
-                    <div style="line-height: 21px;">由于QQ业务调整，2016-06-17日之后注册的QQ号不再支持绑定微信帐号，请使用该时间之前注册的QQ操作绑定，或绑定手机号/QQ邮箱，敬请谅解。</div>
-                </div>
-            </div>
+            
         </div>
     </div>
+    <script src="//imgcache.qq.com/bossweb/service/js/touch/zepto.min.js" type="text/javascript"></script>
+    <script>
+        function getUrlVal(para) {
+            var search = location.search; //页面URL的查询部分字符串  
+            var arrPara = new Array(); //参数数组。数组单项为包含参数名和参数值的字符串，如“para=value”  
+            var arrVal = new Array(); //参数值数组。用于存储查找到的参数值  
+
+            if (search != "") {
+                var index = 0;
+                search = search.substr(1); //去除开头的“?”  
+                arrPara = search.split("&");
+
+                for (i in arrPara) {
+                    var paraPre = para + "="; //参数前缀。即参数名+“=”，如“para=”  
+                    if (arrPara[i].indexOf(paraPre) == 0 && paraPre.length < arrPara[i].length) {
+                        arrVal[index] = decodeURI(arrPara[i].substr(paraPre.length)); //顺带URI解码避免出现乱码  
+                        index++;
+                    }
+                }
+            }
+
+            if (arrVal.length == 1) {
+                return arrVal[0];
+            } else if (arrVal.length == 0) {
+                return null;
+            } else {
+                return arrVal;
+            }
+        }
+        // 页面数据
+        var data = [{title:'车销客是做什么',desc:['车销客是二手车企业经营管理平台，实现二手车企业经营自动化和数字化办公，优化现有的管理组织结构，调整管理体制。特别适合企业销售部门办公和管理使用，协助销售经理和销售人员快速管理客户、销售和业务的重要数据。','非二手车买卖交易平台！','主要功能模块包括：库存管理、报价管理、销售机会管理、客户管理、订单管理、收购管理、帐目管理、任务管理、权限管理、业绩报表数据分析等；']},{title:'哪些人合适车销客',desc:['1.适合具有一定经营规模二手车企业使用。','2.适合具有卓见思维的二手车企业家使用。','3.想实现二手车企业信息自动化管理。','*如果您没有满足以上三点条件，不建议使用车销客！']},{title:'提交企业认证',desc:['提交企业认证可以获得全部功能的使用权。',' 操作：','【一】主页/管理台页面下方主菜单点击【我的】切换到“我的”页面（如下图）；','<img src="../imgs/01.png">','【二】点击【企业认证】打开认证提交界面；','<img src="../imgs/02.png">','【三】按照页面提示录入相关信息，然后提交认证；','*提交认证申请后，24 小时内完证审核（周未除外），在审核通过前只能访问部份功能。']},{title:'添加员工',desc:['构建线上二手车企业组织结构，使用信息化管理提高二手车企业办公效率。为员工划分不同部门职能权限，积极鼓励员工线上协同办公。',' 操作：','【一】主页/管理台页面下方主菜单点击【我的】切换到“我的”页面，【员工管理】打开员工管理界面（如右图）；','<img src="../imgs/03.png">','【二】点击下方【添加员工】按钮，打开添加员工界面（如下图）；','<img src="../imgs/04.png">','【三】，按照页面提示录入相关信息（如右图）；（其中手机号为员工今后登陆 APP 的帐号，员工须下载车销客。）']}];
+        var index = getUrlVal('id');
+        var str1 = '<h2 class="q-title">'+ data[index].title +'</h2>';
+        var str2 ='';
+        for(var i = 0;i<data[index].desc.length;i++){
+            str2 += '<div style="line-height: 21px;">'+ data[index].desc[i] +'</div>'
+            console.log(data[index].desc[i]);
+        }
+        $('.detail-box').html(''+ str1 +'<div class="q-content">'+ str2 +'</div>');
+        console.log(str2);
+        // <div style="line-height: 21px;"><b>手机号绑定与解绑微信：</b></div>
+        // $('<h2 class="q-title">'+ data[index].title +'</h2><div class="q-content"><div><div style="line-height: 21px;">'+ data[index].desc +'</div><div style="text-align: center; line-height: 21px;"><img src="'+  +'"></div></div></div>').appendTo($('.detail-box'));
+        
+    </script>
     <!-- <script src="//imgcache.qq.com/bossweb/service/js/touch/zepto.min.js" type="text/javascript"></script>
     <script src="//imgcache.qq.com/bossweb/service/js/touch/zepto.model.js" type="text/javascript"></script>
     <div style="display:none;" id="pop_shade_div" class="kf_mod_touch_pop_shade"></div> -->
